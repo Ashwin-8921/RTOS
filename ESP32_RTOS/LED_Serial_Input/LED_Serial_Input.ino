@@ -11,7 +11,8 @@ static const int led_pin = 2;
 static int led_delay = 500;
 
 void toggleLED(void *parameter) {
-  while (1) {
+  while (1) 
+  {
     digitalWrite(led_pin, HIGH);
     vTaskDelay(led_delay / portTICK_PERIOD_MS);
     digitalWrite(led_pin, LOW);
@@ -22,22 +23,28 @@ void toggleLED(void *parameter) {
 void readSerial(void *parameters) {
   char c;
   char buf[buf_len];
-  uint8_t idx = 0;
+  uint8_t i = 0;
   memset(buf, 0, buf_len);
 
-  while (1) {
-    if (Serial.available() > 0) {
+  while (1) 
+  {
+    if (Serial.available() > 0) 
+    {
       c = Serial.read();
-      if (c == '\n') {
+      if (c == '\n') 
+      {
         led_delay = atoi(buf);
         Serial.print("Updated LED delay to: ");
         Serial.println(led_delay);
         memset(buf, 0, buf_len);
-        idx = 0;
-      } else {
-        if (idx < buf_len - 1) {
-          buf[idx] = c;
-          idx++;
+        i = 0;
+      } 
+      else 
+      {
+        if (i < buf_len - 1) 
+        {
+          buf[i] = c;
+          i++;
         }
       }
     }
@@ -49,7 +56,7 @@ void setup() {
   Serial.begin(9600);
   vTaskDelay(1000 / portTICK_PERIOD_MS);
   Serial.println("Multi-task LED Demo");
-  Serial.println("Enter a number in milliseconds to change the LED delay.");
+  Serial.println("Enter delay in milli seconds:");
 
   xTaskCreatePinnedToCore(
     toggleLED,
