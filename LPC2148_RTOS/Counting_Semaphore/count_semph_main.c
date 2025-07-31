@@ -4,8 +4,7 @@
 #include "Uart.h"
 #include "semphr.h"
 #include "serial.h"
-//#define configUSE_COUNTING_SEMAPHORES 1
-void initpll(void);
+
 void task1(void *p);
 void task2(void *p);
 void task3(void *p);
@@ -30,11 +29,11 @@ void uart_interrupt()
 {
   
   U0TER=(1<<7);
-  U0IER=0x01;  //enables uart receive identification interrupt
-  VICIntSelect=0x0000;     //selecting as irq
-  VICIntEnable|=0x0040;   //enable uart1
-  VICVectAddr2=(unsigned long int)rx1;  //assigning address
-  VICVectCntl2=0x26;  //need to assign slot no of interrupt source which has been activated
+  U0IER=0x01;  
+  VICIntSelect=0x0000;     
+  VICIntEnable|=0x0040;   
+  VICVectAddr2=(unsigned long int)rx1;  
+  VICVectCntl2=0x26;  
 }
 
 int main()
