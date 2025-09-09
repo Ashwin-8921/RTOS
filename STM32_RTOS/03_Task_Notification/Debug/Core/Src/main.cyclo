@@ -1,0 +1,9 @@
+../Core/Src/main.c:70:6:uart_send	1
+../Core/Src/main.c:76:6:task_led	2
+../Core/Src/main.c:93:6:task_button	2
+../Core/Src/main.c:113:5:main	1
+../Core/Src/main.c:191:6:SystemClock_Config	4
+../Core/Src/main.c:241:13:MX_USART2_UART_Init	2
+../Core/Src/main.c:276:13:MX_GPIO_Init	1
+../Core/Src/main.c:321:6:StartDefaultTask	1
+../Core/Src/main.c:336:6:Error_Handler	1
