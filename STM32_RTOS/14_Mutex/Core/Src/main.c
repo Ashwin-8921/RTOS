@@ -171,8 +171,7 @@ int main(void)
           xTaskCreate(Task1, "Task1", 128, NULL, 1, NULL);
           xTaskCreate(Task2, "Task2", 128, NULL, 1, NULL);
 
-          // Start scheduler
-          vTaskStartScheduler();
+         
       }
 
   /* USER CODE END RTOS_THREADS */
